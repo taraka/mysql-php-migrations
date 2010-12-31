@@ -13,6 +13,7 @@
 // we want to see any errors
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+date_default_timezone_set('Europe/Prague');
 
 /**
  * Define the full path to this file.
