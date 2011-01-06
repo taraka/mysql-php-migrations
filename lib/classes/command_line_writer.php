@@ -86,23 +86,6 @@ class MpmCommandLineWriter
 	 */
 	private function addHeader()
 	{
-		$blank = (object) array();
-		$blank->text = ' ';
-		$blank->indent = 0;
-		array_unshift($this->text, $blank);
-
-		$max_line_len = $this->maxWidth - 12;
-		$bar = '';
-		for ($i = 0; $i < $max_line_len; $i++)
-		{
-			$bar .= "*";
-		}
-		$bar .= ' v' . MPM_VERSION . ' ***';
-		$bar_obj = (object) array();
-		$bar_obj->text = $bar;
-		$bar_obj->indent = 0;
-		array_unshift($this->text, $bar_obj);
-
 		$lines = MpmTemplateHelper::getTemplateAsArrayOfLines('header.txt');
 
 		$start = count($lines) - 1;
@@ -120,34 +103,10 @@ class MpmCommandLineWriter
 	}
 
 	/**
-	 * Adds the footer to the $text property.
-	 *
-	 * @uses MpmCommandLineWriter::addText()
-	 *
-	 * @return void
-	 */
-	private function addFooter()
-	{
-		$this->addText(' ');
-		$max_line_len = $this->maxWidth - 1;
-		$bar = '';
-		for ($i = 0; $i < $max_line_len; $i++)
-		{
-			$bar .= "*";
-		}
-		$bar_obj = (object) array();
-		$bar_obj->text = $bar;
-		$bar_obj->indent = 0;
-		array_push($this->text, $bar_obj);
-		return;
-	}
-
-	/**
 	 * Writes the header, text, and footer.
 	 *
 	 * @uses MpmCommandLineWriter::writeHeader()
 	 * @uses MpmCommandLineWriter::writeText()
-	 * @uses MpmCommandLineWriter::writeFooter()
 	 *
 	 * @return void
 	 */
@@ -155,7 +114,6 @@ class MpmCommandLineWriter
 	{
 		$this->writeHeader();
 		$this->writeText();
-		$this->writeFooter();
 		return;
 	}
 
@@ -193,7 +151,7 @@ class MpmCommandLineWriter
 			}
 			$body .= "\n";
 		}
-		echo $body;
+		echo $body . "\n";
 		return;
 	}
 
@@ -251,23 +209,6 @@ class MpmCommandLineWriter
 		$this->writeText();
 		$this->text = $text;
 		return;
-	}
-
-	/**
-	 * Writes the footer to the console.
-	 *
-	 * @uses MpmCommandLineWriter::addFooter()
-	 * @uses MpmCommandLineWriter::writeText()
-	 *
-	 * @return void
-	 */
-	public function writeFooter()
-	{
-		$text = $this->text;
-		$this->text = array();
-		$this->addFooter();
-		$this->writeText();
-		$this->text = $text;
 	}
 
 }
