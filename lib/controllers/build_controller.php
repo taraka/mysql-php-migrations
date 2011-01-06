@@ -25,7 +25,6 @@ class MpmBuildController extends MpmController
 	 * @uses MpmCommandLineWriter::addText()
 	 * @uses MpmCommandLineWriter::write()
 	 * @uses MpmCommandLineWriter::writeHeader()
-	 * @uses MpmCommandLineWriter::writeFooter()
 	 * @uses MpmBuildController::build()
 	 * @uses MPM_DB_PATH
 	 *
@@ -125,15 +124,12 @@ class MpmBuildController extends MpmController
 		    if (empty($answer) || substr($answer, 0, 1) == 'n')
 		    {
 			    echo "\nABORTED!\n\n";
-			    $clw->writeFooter();
 			    exit;
 		    }
 		}
 
         echo "\n";
         $this->build($with_data);
-
-        $clw->writeFooter();
         exit;
 
 	}

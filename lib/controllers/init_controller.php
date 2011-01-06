@@ -29,7 +29,6 @@ class MpmInitController extends MpmController
 	 * @uses MpmInitController::displayHelp()
 	 * @uses MpmCommandLineWriter::getInstance()
 	 * @uses MpmCommandLineWriter::writeHeader()
-	 * @uses MpmCommandLineWriter::writeFooter()
 	 * @uses MpmBuildController::build()
 	 *
 	 * @return void
@@ -57,7 +56,6 @@ class MpmInitController extends MpmController
 			if (empty($answer) || substr($answer, 0, 1) == 'n')
 			{
 				echo "\nABORTED!\n\n";
-				$clw->writeFooter();
 				exit;
 			}
 			else
@@ -353,7 +351,6 @@ class MpmInitController extends MpmController
 		}
 
 		echo "Initalization complete!  Type 'php migrate.php help' for a list of commands.\n\n";
-		$clw->writeFooter();
 		exit;
 	}
 

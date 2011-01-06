@@ -26,7 +26,6 @@ class MpmStatusController extends MpmController
 	 * @uses MpmListHelper::getFullList()
 	 * @uses MpmCommandLineWriter::getInstance()
 	 * @uses MpmCommandLineWriter::writeHeader()
-	 * @uses MpmCommandLineWriter::writeFooter()
 	 *
 	 * @return void
 	 */
@@ -57,7 +56,6 @@ class MpmStatusController extends MpmController
 			echo "You are currently on migration $num -- " . $latest . '.';
 		}
 		echo "\n";
-		$clw->writeFooter();
 	}
 	
 	/**

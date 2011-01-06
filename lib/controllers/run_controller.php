@@ -25,7 +25,6 @@ class MpmRunController extends MpmController
 	 * @uses MpmCommandLineWriter::addText()
 	 * @uses MpmCommandLineWriter::write()
 	 * @uses MpmCommandLineWriter::writeHeader()
-	 * @uses MpmCommandLineWriter::writeFooter()
 	 * @uses MpmMigrationHelper::doesMigrationExist() 
 	 * @uses MpmMigrationHelper::getMigrationObject()
 	 * @uses MpmMigrationHelper::runMigration()
@@ -84,7 +83,6 @@ class MpmRunController extends MpmController
 		$obj->writeHeader();
 		MpmMigrationHelper::runMigration($row, $type);
 		echo "\n";
-		$obj->writeFooter();
 		
 	}
 

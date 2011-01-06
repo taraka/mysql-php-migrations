@@ -23,7 +23,6 @@ class MpmUpController extends MpmController
 	 * @uses MpmUpController::displayHelp()
 	 * @uses MpmCommandLineWriter::getInstance()
 	 * @uses MpmCommandLineWriter::writeHeader()
-	 * @uses MpmCommandLineWriter::writeFooter()
 	 * @uses MpmMigrationHelper::getListOfMigrations()
 	 * @uses MpmMigrationHelper::getTimestampFromId()
 	 * @uses MpmMigrationHelper::runMigration()
@@ -68,8 +67,7 @@ class MpmUpController extends MpmController
 		{
 		    if (!$quiet)
 		    {
-		        echo 'All needed migrations have already been run or no migrations exist.';
-		        $clw->writeFooter();
+		        echo "All needed migrations have already been run or no migrations exist.\n\n";
 		        exit;
 		    }
 		    else
@@ -95,7 +93,6 @@ class MpmUpController extends MpmController
 		if (!$quiet)
 		{
 		    echo "\n";
-		    $clw->writeFooter();
 		}
 	}
 
